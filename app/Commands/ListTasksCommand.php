@@ -15,9 +15,10 @@ class ListTasksCommand extends Command
     {
         $tasks = Todo::all();
 
-        $this->table(['Task', 'Status', 'Created at'], $tasks->map(fn($todo) => [
+        $this->table(['ID', 'Task', 'Status', 'Created at'], $tasks->map(fn($todo) => [
+            $todo->id,
             $todo->task,
-            $todo->completed_at ? 'Completed✔️' : '--',
+            $todo->completed_at ? 'Completed✅' : '--',
             $todo->created_at->diffForHumans(),
         ]));
     }
