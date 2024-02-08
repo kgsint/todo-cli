@@ -25,7 +25,7 @@ class ToggleTaskStatusCommand extends Command
         $this->info('A task has been checked successfully.');
     }
 
-    public function toggleCheck(Todo $todo)
+    private function toggleCheck(Todo $todo)
     {
         $todo->update([
             'completed_at' => $todo->completed_at ? null : now(),
